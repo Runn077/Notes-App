@@ -1,21 +1,32 @@
 .homeContainer {
   width: 100vw;
-  height: auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px
+  flex-wrap: wrap;          /* allow notes to move to next line */
+  gap: 10px;                /* spacing between notes */
+  justify-content: flex-start; /* align notes to the top-left horizontally */
+  align-items: flex-start;     /* ensures notes align at the top */
 }
 
 .note {
   width: 20%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   outline: auto;
   padding: 10px;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.note .title{
+.note .title {
   font-style: normal;
   font-size: 1.2rem;
   text-align: center;
+  padding-bottom: 10px;
+  flex-shrink: 0;  /* keeps title height fixed */
+}
 
+.note .postBody {
+  flex: 1;              /* take remaining vertical space */
+  overflow: hidden;     /* hide overflowing text */
+  word-wrap: break-word; /* allow text to wrap to next line */
 }
