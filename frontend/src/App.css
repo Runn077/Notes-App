@@ -1,0 +1,21 @@
+.homeContainer {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px
+}
+
+.note {
+  width: 20%;
+  aspect-ratio: 1/1;
+  outline: auto;
+  padding: 10px;
+}
+
+.note .title{
+  font-style: normal;
+  font-size: 1.2rem;
+  text-align: center;
+
+}
