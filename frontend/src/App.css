@@ -38,6 +38,7 @@
   flex: 1;           /* fills remaining height inside the square note */
   overflow-y: auto;  /* scroll if content is too tall */
   word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .modal {
@@ -85,4 +86,36 @@
 .createBtn:hover {
   transform: translateY(-1px);     
   outline: 2px solid rgb(132, 255, 130);
+}
+
+.noteContainer {
+  display: flex;
+  flex-direction: column; /* stack title and text vertically */
+  width: 90vw;            /* almost full width of screen */
+  max-width: 800px;       /* optional: limit max width for readability */
+  margin: 20px auto;      /* center horizontally with top/bottom spacing */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.noteTitle {
+  width: 100%;           /* full width */
+  font-size: 2rem;       /* big title */
+  font-family:'Courier New', Courier, monospace;
+  margin-bottom: 20px;   /* spacing below title */
+  text-align: left;      /* left-align, or center if you prefer */
+}
+
+.noteText {
+  width: 100%;           /* full width */
+  font-size: 1rem;
+  line-height: 1.5;      /* easier to read */
+  resize: none;          /* if using textarea, prevents resizing */
+  border: 1px solid #ccc; /* optional: border for textarea */
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 200px;     /* ensure some initial height */
+  white-space: pre-wrap;  /* keeps line breaks from textarea */
+  overflow-wrap: break-word;
+  font-family:'Courier New', Courier, monospace;
 }
