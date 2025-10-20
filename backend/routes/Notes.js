@@ -20,4 +20,19 @@ router.post("/", async (req, res) => {
     res.json(note);
 });
 
+// put
+router.put("/:id", async (req, res) => {
+    const id = req.params.id;
+    const {title, postBody} = req.body; // The updated data
+    
+    await Notes.update(
+      { title, postBody },     // values to update
+      { where: { id: id } }    // condition
+    );
+    
+    const updatedNote = await Notes.findByPk(id);
+    res.json(updatedNote);
+
+})
+
 module.exports = router;
