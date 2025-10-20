@@ -19,6 +19,12 @@
   box-sizing: border-box;
   border-radius: 5px;
   background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.note:hover{
+  transform: translateY(-1px);     
+  outline: 2px solid rgb(132, 255, 130);
 }
 
 .note .title {
