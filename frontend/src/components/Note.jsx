@@ -11,11 +11,13 @@ function Note() {
         .then((response) => {
             setNote(response.data)
         })
-  })
+    })
 
   return (
     <div className='noteContainer'>
-      {note.title}
+        <div className='noteTitle'>{note.title}</div>
+        <div className='noteText'>{note.postBody}</div>
+
     </div>
   )
 }
