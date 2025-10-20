@@ -11,13 +11,26 @@ function Note() {
         .then((response) => {
             setNote(response.data)
         })
-    })
+  }, [id]);
+
+  const handleChange = async (e) => {
+    const updatedText = e.target.value
+    setNote({...note, postBody: updatedText})
+    await axios.put(`http://localhost:3001/notes/${id}`, {
+        ...note,
+        postBody: updatedText
+    });
+  }
 
   return (
     <div className='noteContainer'>
         <div className='noteTitle'>{note.title}</div>
-        <div className='noteText'>{note.postBody}</div>
-
+        <textarea 
+            className='noteText'
+            value={note.postBody}
+            onChange={handleChange}
+            placeholder='Write Something!!!'
+        />
     </div>
   )
 }
