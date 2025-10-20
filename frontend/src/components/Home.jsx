@@ -1,7 +1,10 @@
 import React, {use, useEffect, useState}  from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate()
+
   const [listOfNotes, setListOfNotes] = useState([]);
   const [modal, setModal] = useState(false);
   const [newTitle, setNewTitle] = useState('');
@@ -44,7 +47,10 @@ function Home() {
     <div className="homeContainer">
         {listOfNotes.map((note, index) => {
             return (
-            <div className = "note" key={index}>
+            <div 
+              className = "note" 
+              key={index} 
+              onClick={() => { navigate(`/note/${note.id}`)}}>
                 <div className='title'>{note.title}</div>
                 <div className='postBody'>{note.postBody}</div>
             </div>
