@@ -18,7 +18,7 @@
   flex-direction: column;
   box-sizing: border-box;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   cursor: pointer;
 }
 
@@ -28,10 +28,13 @@
 }
 
 .note .title {
-  font-size: 1.2rem;
+  width: calc(100% + 20px); /* 100% + left/right padding of .note */
+  margin: -10px 0 10px -10px; /* counteract .note padding */
+  padding: 10px;
+  background-color: #5a89ff;
+  color: white;
   text-align: center;
-  padding-bottom: 10px;
-  flex-shrink: 0;   /* title keeps its natural height */
+  box-sizing: border-box;
 }
 
 .note .postBody {
@@ -118,4 +121,23 @@
   white-space: pre-wrap;  /* keeps line breaks from textarea */
   overflow-wrap: break-word;
   font-family:'Courier New', Courier, monospace;
+}
+
+.noteTitle {
+  width: 100%;           /* full width */
+  font-size: 2rem;
+  resize: none;          /* if using textarea, prevents resizing */
+  border: 1px solid #ccc; /* optional: border for textarea */
+  padding: 10px;
+  box-sizing: border-box;
+  white-space: pre-wrap;  /* keeps line breaks from textarea */
+  overflow-wrap: break-word;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.noteContainer {
+  max-width: 90vw;     
+  background-color: #5a89ff;
+
+
 }
