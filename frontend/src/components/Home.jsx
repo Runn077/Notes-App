@@ -53,6 +53,7 @@ function Home() {
               onClick={() => { navigate(`/note/${note.id}`)}}>
                 <div className='title'>{note.title}</div>
                 <div className='postBody'>{note.postBody}</div>
+                <button className='deleteBtn'>delete</button>
             </div>
             );
         })}

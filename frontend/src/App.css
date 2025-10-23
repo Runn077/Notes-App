@@ -138,6 +138,21 @@
 .noteContainer {
   max-width: 90vw;     
   background-color: #5a89ff;
+}
 
+.deleteBtn {
+  background-color: #ff7373;
+  display: block;      
+  padding: 10px 20px;  
+  font-size: 1rem;     
+  cursor: pointer;     
+  border: none;       
+  outline: none;      
+  border-radius: 5px; 
+  color: white;  
+}
 
+.deleteBtn:hover{
+  transform: translateY(-1px);     
+  outline: 2px solid rgb(255, 0, 0);
 }
