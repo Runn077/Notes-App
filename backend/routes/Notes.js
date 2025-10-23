@@ -35,4 +35,13 @@ router.put("/:id", async (req, res) => {
 
 })
 
+// delete
+router.delete("/:id", async (req, res) => {
+    const id = req.params.id;
+    await Notes.destroy(
+        {where: {id: id}
+    });
+    res.send("Delete is Successfull")
+})
+
 module.exports = router;
