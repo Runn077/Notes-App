@@ -15,8 +15,7 @@ router.get("/:id", async (req, res) =>{
 
 // post
 router.post("/", async (req, res) => {
-    const note = req.body;
-    await Notes.create(note);
+    const note = await Notes.create(req.body);
     res.json(note);
 });
 
