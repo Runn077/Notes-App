@@ -10,6 +10,7 @@ function Home() {
   const [newTitle, setNewTitle] = useState('');
   const [titleErrMsg, setTitleErrMsg] = useState(false);
 
+  // Getting list of notes
   useEffect(() => {
     axios.get(`http://localhost:3001/notes`)
     .then((response) => {
@@ -21,10 +22,12 @@ function Home() {
     });
   }, []);
 
+  // Modal Button
   const handleClick = () =>{
     setModal(!modal)
   }
 
+  // Save Button
   const handleSave = () => {
 
     // Does not save note without a title
@@ -41,6 +44,18 @@ function Home() {
       })
   }
 
+  // Delete Button
+  const handleDelete = async (noteId) => {
+    await axios.delete(`http://localhost:3001/notes/${noteId}`)
+      .then((response) =>{
+        console.log(response);
+        setListOfNotes(prevNotes => prevNotes.filter(note => note.id !== noteId));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
   return (
     <>
     <button onClick={handleClick} className='createBtn'>Create</button> 
@@ -53,7 +68,13 @@ function Home() {
               onClick={() => { navigate(`/note/${note.id}`)}}>
                 <div className='title'>{note.title}</div>
                 <div className='postBody'>{note.postBody}</div>
-                <button className='deleteBtn'>delete</button>
+                <button className='deleteBtn' 
+                  onClick={(e) => {
+                  e.stopPropagation()
+                  handleDelete(note.id)}}
+                >
+                  delete
+                </button>
             </div>
             );
         })}
