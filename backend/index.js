@@ -11,6 +11,10 @@ app.use(express.json());
 const notesRouter = require("./routes/Notes");
 app.use("/notes", notesRouter);
 
+const usersRouter = require("./routes/Users");
+app.use("/users", usersRouter);
+
+
 const port = process.env.PORT
 db.sequelize.sync({ alter: true }).then(() => {
     app.listen(port, () => {
