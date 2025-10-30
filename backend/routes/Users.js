@@ -5,7 +5,7 @@ const { Users } = require("../models")
 // get
 router.get("/", async (req, res) => {
     const listOfUsers = await Users.findAll();
-    res.json(listOfNotes);
+    res.json(listOfUsers);
 });
 
 router.get("/:id", async (req, res) =>{
