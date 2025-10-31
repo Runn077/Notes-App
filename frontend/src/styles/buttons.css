@@ -1,5 +1,5 @@
 .createBtn {
-  background-color: #5a89ff;
+  background-color: #314c91;
   display: block;      
   margin: 20px auto;   
   padding: 10px 20px;  
@@ -34,7 +34,7 @@
 }
 
 .saveBtn {
-  background-color: #5a89ff;
+  background-color: #314c91;
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -42,6 +42,43 @@
   font-size: 1rem;
   cursor: pointer;
   transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+/* Modal-specific buttons used in Home.jsx */
+.save {
+  background-color: #314c91;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  margin-right: 8px;
+}
+
+.save:hover {
+  background-color: #4b78ea;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.closeModalButton {
+  background-color: #e7eaf6;
+  color: #213360;
+  border: 1px solid #cfd6ee;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.closeModalButton:hover {
+  background-color: #f2f4fb;
+  border-color: #b9c3e9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
 .saveBtn:hover {

@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; /* allow modal to scroll if content too big */
+  overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,10 +21,43 @@
 
 .modalContent {
   position: relative;
-  background: white;
+  background: #213360;
+  color: white;
   padding: 20px;
   border-radius: 8px;
   z-index: 2;
+}
+
+
+/* Modal content elements */
+.modalTitle {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.titleInput {
+  width: 100%;
+  background: #ffffff;
+  color: #1e2a4a;
+  border: 1px solid #cfd6ee;
+  border-radius: 8px;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 12px; /* equal left/right padding */
+  font-size: 0.95rem;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.titleInput:focus {
+  border-color: #8ea6ff;
+  box-shadow: 0 0 0 3px rgba(78, 115, 255, 0.2);
+}
+
+.titleErrMessage {
+  margin-top: 8px;
+  color: #ffb4b4;
+  font-size: 0.9rem;
 }
 
 
