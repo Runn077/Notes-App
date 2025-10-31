@@ -1,40 +1,34 @@
 .noteContainer {
   display: flex;
-  flex-direction: column; /* stack title and text vertically */
-  width: 90vw;            /* almost full width of screen */
-  max-width: 800px;       /* optional: limit max width for readability */
-  margin: 20px auto;      /* center horizontally with top/bottom spacing */
+  flex-direction: column;
+  width: 90vw;            
+  max-width: 800px;       
+  margin: 20px auto;     
   padding: 20px;
   box-sizing: border-box;
-  background-color: #5a89ff; /* from later override */
+  background-color: #314c91; 
 }
 
 .noteTitle {
-  width: 100%;           /* full width */
-  font-size: 2rem;       /* big title */
-  font-family:'Courier New', Courier, monospace;
-  margin-bottom: 20px;   /* spacing below title */
-  text-align: left;      /* left-align */
-  resize: none;          /* if textarea used */
-  border: 1px solid #ccc; /* if input/textarea */
+  width: 100%;         
+  font-size: 20px;      
+  margin-bottom: 20px;   
+  text-align: left;     
+  resize: none;         
+  border: 1px solid #ccc;
   padding: 10px;
   box-sizing: border-box;
-  white-space: pre-wrap;
   overflow-wrap: break-word;
 }
 
 .noteText {
   width: 100%;
-  font-size: 1rem;
-  line-height: 1.5;
-  resize: none;
-  border: 1px solid #ccc;
-  padding: 10px;
+  min-height: 10rem;     /* initial height */
+  resize: vertical;      /* allow manual grow */
+  overflow-y: auto;
   box-sizing: border-box;
-  min-height: 200px;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  font-family:'Courier New', Courier, monospace;
+  font-size: 15px;
+  resize: none;
 }
 
 

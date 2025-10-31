@@ -3,8 +3,9 @@ html, body, #root {
 }
 
 body {
-  margin: 0;                 /* remove default white margins */
-  background-color: #C8D9F0; /* ensure full-page dark background */
+  margin: 0;                
+  background-color: #C8D9F0;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 

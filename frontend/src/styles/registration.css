@@ -29,7 +29,6 @@
 
 .registrationCard .usernameTitle,
 .registrationCard .passwordTitle {
-  font-family:'Courier New', Courier, monospace;
   margin: 0;
   color: #0f172a;
 }
