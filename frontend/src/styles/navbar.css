@@ -2,8 +2,9 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #ffffff;
-  border-bottom: 1px solid #eaeaea;
+  color: #ffffff;
+  background: #314c91;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .navbar-container {
@@ -22,13 +23,17 @@
 
 .brand {
   font-size: 18px;
-  color: #314c91;
   text-decoration: none;
 }
 
+.brand,
+.nav-link { color: inherit; }
+
+.brand:visited,
+.nav-link:visited { color: inherit; }
+
 .nav-link {
   margin-left: 16px;
-  color: #314c91;
   text-decoration: none;
   font-weight: 500;
 }
