@@ -1,11 +1,11 @@
 .homeContainer {
   display: flex;
-  flex-wrap: wrap;           /* allow notes to wrap */
-  justify-content: flex-start; /* align notes to left inside the container */
-  gap: 20px;                 /* spacing between notes */
-  max-width: 90vw;         /* optional: container max width */
-  margin: 0 auto;            /* center container horizontally */
-  box-sizing: border-box;    /* include padding if added */
+  flex-wrap: wrap;          
+  justify-content: flex-start; 
+  gap: 20px;                
+  max-width: 90vw;         
+  margin: 0 auto;            
+  box-sizing: border-box;    
 }
 
 .note {
@@ -27,8 +27,8 @@
 }
 
 .note .title {
-  width: calc(100% + 20px); /* 100% + left/right padding of .note */
-  margin: -10px 0 10px -10px; /* counteract .note padding */
+  width: calc(100% + 20px); 
+  margin: -10px 0 10px -10px; 
   padding: 10px;
   background-color: #5a89ff;
   color: white;
@@ -37,8 +37,8 @@
 }
 
 .note .postBody {
-  flex: 1;           /* fills remaining height inside the square note */
-  overflow-y: auto;  /* scroll if content is too tall */
+  flex: 1;           
+  overflow-y: auto;  
   word-wrap: break-word;
   white-space: pre-wrap;
 }
