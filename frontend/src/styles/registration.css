@@ -1,0 +1,54 @@
+.registrationContainer {
+  display: flex;
+  flex-direction: column;  
+  justify-content: flex-start; 
+  align-items: center;     
+  height: 100vh;       
+  padding: 24px;
+  background: linear-gradient(#0e1b29);
+}
+
+.registrationCard {
+  width: 100%;
+  max-width: 420px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.registrationCard .usernameContainer,
+.registrationCard .passwordContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.registrationCard .usernameTitle,
+.registrationCard .passwordTitle {
+  font-family:'Courier New', Courier, monospace;
+  margin: 0;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.registrationCard .username,
+.registrationCard .password {
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.registrationCard .username:focus,
+.registrationCard .password:focus {
+  border-color: #5a89ff;
+  box-shadow: 0 0 0 3px rgba(90, 137, 255, 0.2);
+}
+
+

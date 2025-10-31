@@ -2,7 +2,6 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
-
 function Registration() {
   const navigate = useNavigate();
 
@@ -24,32 +23,33 @@ function Registration() {
   }
 
   return (
-    <div className='registeration container'>
-        <div className='usernameContainer'>
-            <p className='usernameTitle'>Username</p>
-            <input 
-              className='username' 
-              placeholder='Enter Username'
-              value = {username}
-              onChange={usernameChange}
-            />
-
+    <div className='registrationContainer'>
+        <div className='registrationCard'>
+          <div className='usernameContainer'>
+              <p className='usernameTitle'>Username</p>
+              <input 
+                className='username' 
+                placeholder='Enter Username'
+                value = {username}
+                onChange={usernameChange}
+              />
+          </div>
+          <div className='passwordContainer'>
+              <p className='passwordTitle'>Password</p>
+              <input 
+                className='password' 
+                placeholder='Enter Password'
+                value={password}
+                onChange={passwordChange}
+              />
+          </div>
+          <button 
+            className='saveBtn'
+            onClick={userSave}
+          >
+            Save
+          </button>
         </div>
-        <div className='passwordContainer'>
-            <p className='passwordTitle'>Password</p>
-            <input 
-              className='password' 
-              placeholder='Enter Password'
-              value={password}
-              onChange={passwordChange}
-            />
-        </div>
-        <button 
-          className='saveBtn'
-          onClick={userSave}
-        >
-          Save
-        </button>
     </div>
   )
 }

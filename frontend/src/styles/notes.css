@@ -1,0 +1,46 @@
+.homeContainer {
+  display: flex;
+  flex-wrap: wrap;           /* allow notes to wrap */
+  justify-content: flex-start; /* align notes to left inside the container */
+  gap: 20px;                 /* spacing between notes */
+  max-width: 90vw;         /* optional: container max width */
+  margin: 0 auto;            /* center container horizontally */
+  box-sizing: border-box;    /* include padding if added */
+}
+
+.note {
+  width: 300px;
+  aspect-ratio: 1 / 1;
+  outline: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.note:hover{
+  transform: translateY(-1px);     
+  outline: 2px solid rgb(132, 255, 130);
+}
+
+.note .title {
+  width: calc(100% + 20px); /* 100% + left/right padding of .note */
+  margin: -10px 0 10px -10px; /* counteract .note padding */
+  padding: 10px;
+  background-color: #5a89ff;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.note .postBody {
+  flex: 1;           /* fills remaining height inside the square note */
+  overflow-y: auto;  /* scroll if content is too tall */
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+
