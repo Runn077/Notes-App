@@ -11,14 +11,15 @@
 .note {
   width: 300px;
   aspect-ratio: 1 / 1;
-  outline: auto;
   padding: 10px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #ffffff;
   cursor: pointer;
+  overflow: hidden; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .note:hover{
@@ -27,18 +28,20 @@
 }
 
 .note .title {
-  width: calc(100% + 20px); 
-  margin: -10px 0 10px -10px; 
+  width: calc(100% + 20px); /* 100% + left/right padding of .note */
+  margin: -10px 0 10px -10px; /* counteract .note padding */
   padding: 10px;
-  background-color: #5a89ff;
+  background-color: #314c91;
   color: white;
   text-align: center;
   box-sizing: border-box;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .note .postBody {
-  flex: 1;           
-  overflow-y: auto;  
+  flex: 1;           /* fills remaining height inside the square note */
+  overflow-y: auto;  /* scroll if content is too tall */
   word-wrap: break-word;
   white-space: pre-wrap;
 }
