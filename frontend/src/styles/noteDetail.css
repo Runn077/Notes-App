@@ -19,13 +19,13 @@
   padding: 10px;
   box-sizing: border-box;
   overflow-wrap: break-word;
+  overflow: hidden;     
 }
 
 .noteText {
   width: 100%;
-  min-height: 10rem;     /* initial height */
-  resize: vertical;      /* allow manual grow */
-  overflow-y: auto;
+  min-height: 10rem;  
+  overflow: hidden;      
   box-sizing: border-box;
   font-size: 15px;
   resize: none;
