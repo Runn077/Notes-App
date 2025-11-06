@@ -20,21 +20,10 @@
   gap: 16px;
 }
 
-.registrationCard .usernameContainer,
-.registrationCard .passwordContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.registrationCard .usernameTitle,
-.registrationCard .passwordTitle {
-  margin: 0;
-  color: #0f172a;
-}
-
-.registrationCard .username,
-.registrationCard .password {
+.registrationCard .usernameInput,
+.registrationCard .passwordInput,
+.registrationCard .confirmPasswordInput
+ {
   padding: 12px 14px;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -48,4 +37,7 @@
   box-shadow: 0 0 0 3px rgba(90, 137, 255, 0.2);
 }
 
+.errorMessage {
+  color: red;
+}
 
