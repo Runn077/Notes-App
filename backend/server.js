@@ -11,9 +11,8 @@ app.use(express.json());
 const notesRouter = require("./routes/Notes");
 app.use("/notes", notesRouter);
 
-const usersRouter = require("./routes/Users");
-app.use("/users", usersRouter);
-
+const authRouter = require("./routes/Auth")
+app.use("/auth", authRouter);
 
 const port = process.env.PORT
 db.sequelize.sync({ alter: true }).then(() => {
