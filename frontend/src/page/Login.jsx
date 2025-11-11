@@ -38,6 +38,7 @@ function Login() {
   return (
     <div className='registrationContainer'>
         <form className='registrationCard' onSubmit={handleSubmit(onSubmit)}>
+          <div className='registrationTitle'>Login</div>  
           <p> Username </p>
           <input className='usernameInput' 
           placeholder='Enter Username'

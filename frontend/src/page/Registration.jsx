@@ -43,6 +43,7 @@ function Registration() {
   return (
     <div className='registrationContainer'>
         <form className='registrationCard' onSubmit={handleSubmit(onSubmit)}>
+          <div className='registrationTitle'>Registration</div>
           <p> Username </p>
           <input className='usernameInput' 
           placeholder='Enter Username'
