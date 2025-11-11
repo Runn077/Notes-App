@@ -4,6 +4,7 @@ import Home from './page/Home'
 import Note from './page/Note'
 import Registration from './page/Registration'
 import Navbar from './components/Navbar'
+import Login from './page/Login'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -11,6 +12,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/note/:id" element={<Note />} />
       <Route path="/registration" element={<Registration />} />
+      <Route path="/login" element={<Login />} />
     </Route>
   )
 )
