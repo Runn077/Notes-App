@@ -4,64 +4,14 @@ const { Users } = require("../models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require('dotenv').config();
-const verifyToken = require('../middleware/authMiddleware')
+const verifyToken = require('../middleware/verifyKey')
+const authController = require('../controller/authController')
 
 // post
-router.post("/register", async (req, res) => {
-    try {
-        const {username, password} = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
+router.post("/refresh", authController.refreshPost);
 
-        if (!username || !password) {
-            return res.status(400).json({ error: "Username and password are required." });
-        }
-        const existingUser = await Users.findOne({ where: { username } });
-        if (existingUser) {
-            return res.status(400).json({ error: "Username already exists." });
-        }
+router.post("/register", authController.registerPost);
 
-        const newUser = await Users.create({ username, password: hashedPassword });
-        res.status(201).json({ message: "User registered successfully", user: newUser });
-        
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: "Server error" });
-    }
-});
-
-router.post("/login", async (req, res) => {
-    try {
-        const {username, password} = req.body
-        const user = await Users.findOne({ where: {username} });
-
-        if (!user){
-            return res.status(400).json({error: "Username or password is incorrect"})
-        }
-
-        const validatePassword = await bcrypt.compare(password, user.password)
-        if (!validatePassword) {
-            return res.status(400).json({ error: "Username or password is incorrect" });
-        }
-        
-        const accessToken = jwt.sign({
-            id: user.id, 
-            username: user.username,
-        }, process.env.JWT_KEY,
-            { expiresIn: '1m' }
-        );
-        
-        res.json({
-            id: user.id, 
-            username: user.username,
-            accessToken,
-        })
-
-    } catch (error){
-        console.error(error)
-
-    }    
-})
-
-// router.get("/me")
+router.post("/login", authController.loginPost);
 
 module.exports = router;
