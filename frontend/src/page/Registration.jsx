@@ -28,7 +28,7 @@ function Registration() {
       username: data.username,
       password: data.password
     }
-    await axios.post(`http://localhost:3001/auth/register`, userData)
+    await axios.post(`http://localhost:3000/auth/register`, userData)
     .then((response) => {
         console.log(response)
         setServerError("");

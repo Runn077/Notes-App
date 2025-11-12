@@ -12,7 +12,7 @@ function Home() {
 
   // Getting list of notes
   useEffect(() => {
-    axios.get(`http://localhost:3001/notes`)
+    axios.get(`http://localhost:3000/notes`)
     .then((response) => {
         setListOfNotes(response.data)
         console.log(response.data)
@@ -35,7 +35,7 @@ function Home() {
       setTitleErrMsg(true)
       return
     }
-    axios.post(`http://localhost:3001/notes`, {title: newTitle, postBody: ''})
+    axios.post(`http://localhost:3000/notes`, {title: newTitle, postBody: ''})
       .then((response) => {
         setNewTitle('');
         setTitleErrMsg(false)
@@ -46,7 +46,7 @@ function Home() {
 
   // Delete Button
   const handleDelete = async (noteId) => {
-    await axios.delete(`http://localhost:3001/notes/${noteId}`)
+    await axios.delete(`http://localhost:3000/notes/${noteId}`)
       .then((response) =>{
         console.log(response);
         setListOfNotes(prevNotes => prevNotes.filter(note => note.id !== noteId));

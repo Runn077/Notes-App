@@ -15,7 +15,7 @@ function Note() {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/notes/${id}`)
+    axios.get(`http://localhost:3000/notes/${id}`)
         .then((response) => {
             setNote(response.data)
         })
@@ -30,7 +30,7 @@ function Note() {
     const updatedText = e.target.value
     adjustHeight(e.target);
     setNote({...note, postBody: updatedText})
-    await axios.put(`http://localhost:3001/notes/${id}`, {
+    await axios.put(`http://localhost:3000/notes/${id}`, {
         ...note,
         postBody: updatedText
     });
@@ -39,7 +39,7 @@ function Note() {
     const updatedText = e.target.value
     adjustHeight(e.target);
     setNote({...note, title: updatedText})
-    await axios.put(`http://localhost:3001/notes/${id}`, {
+    await axios.put(`http://localhost:3000/notes/${id}`, {
         ...note,
         title: updatedText,
     });

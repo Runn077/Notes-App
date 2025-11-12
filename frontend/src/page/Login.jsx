@@ -23,7 +23,7 @@ function Login() {
       username: data.username,
       password: data.password
     }
-    await axios.post(`http://localhost:3001/auth/login`, userData)
+    await axios.post(`http://localhost:3000/auth/login`, userData)
     .then((response) => {
         console.log(response)
         setServerError("");
@@ -52,6 +52,7 @@ function Login() {
           {...register("password")}
           />
           <p className='errorMessage'>{errors.password?.message}</p>
+          <p className='errorMessage'>{serverError}</p>
           <button className='saveBtn' 
           type='submit'>
             Submit
