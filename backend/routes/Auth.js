@@ -3,6 +3,8 @@ const router = express.Router();
 const { Users } = require("../models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+require('dotenv').config();
+const verifyToken = require('../middleware/authMiddleware')
 
 // post
 router.post("/register", async (req, res) => {
@@ -44,7 +46,9 @@ router.post("/login", async (req, res) => {
         const accessToken = jwt.sign({
             id: user.id, 
             username: user.username,
-        }, "SeceretKey");
+        }, process.env.JWT_KEY,
+            { expiresIn: '1m' }
+        );
         
         res.json({
             id: user.id, 
