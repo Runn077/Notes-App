@@ -19,6 +19,9 @@ function Home() {
     })
     .catch((error) => {
         console.log("Error fetching data: " + error)
+        if (error.response && error.response.status === 401) {
+          navigate('/login');
+        }
     });
   }, []);
 
