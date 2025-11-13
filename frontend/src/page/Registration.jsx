@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const schema = z.object({
   username: z.string()
@@ -18,6 +19,7 @@ const schema = z.object({
 });
 
 function Registration() {
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: {errors} } = useForm({
     resolver: zodResolver(schema),
   })
@@ -31,7 +33,7 @@ function Registration() {
     await axios.post(`http://localhost:3000/auth/register`, userData, { withCredentials: true })
     .then((response) => {
         console.log(response)
-        navigate('/')
+        navigate('/login')
     })
     .catch((error) => {
       setServerError(error.response.data.error)

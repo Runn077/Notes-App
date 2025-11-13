@@ -34,10 +34,6 @@ module.exports.registerPost = async (req, res) => {
         }
 
         const newUser = await Users.create({ username, password: hashedPassword });
-
-        // cookies
-        const token = generateAccessToken(newUser);
-        res.cookie('jwt', token, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24})
         
         res.status(201).json({ message: "User registered successfully", user: newUser });
         
