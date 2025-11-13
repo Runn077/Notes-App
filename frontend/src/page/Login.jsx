@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const schema = z.object({
   username: z.string()
@@ -13,6 +14,7 @@ const schema = z.object({
     .min(5, "Password Must be at least 5 characters"),
 })
 function Login() {
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: {errors} } = useForm({
     resolver: zodResolver(schema),
   })
@@ -23,16 +25,15 @@ function Login() {
       username: data.username,
       password: data.password
     }
-    await axios.post(`http://localhost:3000/auth/login`, userData)
-    .then((response) => {
-        console.log(response)
-        setServerError("");
-    })
-    .catch((error) => {
-      setServerError(error.response.data.error)
-    })
+    try {
+      const response = await axios.post('http://localhost:3000/auth/login', userData, { withCredentials: true });
+      if (response.data.user) {
+        navigate('/')
+      }
+    } catch (error) {
+      setServerError(error.response?.data?.error || "An unexpected error occurred.")
+    }
   
-
   }
 
   return (

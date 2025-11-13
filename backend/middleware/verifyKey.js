@@ -1,21 +1,42 @@
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
+const { Users } = require("../models");
 
 const verifyToken = (req, res, next) => {
-    const authHeader = req.headers.authorization;
-    if (authHeader) {
-        const token = authHeader.split(" ")[1];
-        jwt.verify(token, process.env.JWT_KEY, (err, user) => {
-            if (err){
-                console.log("JWT error: " + err)
-                return res.status(403).json("Token is not valid")
+    const token = req.cookies.jwt;
+    if (token) {
+        jwt.verify(token, process.env.JWT_KEY, (err, decodedToken) => {
+            if (err) {
+                console.log(err.message);
+                return res.status(401).json({error: "Token is not valid"});
+            } else {
+                console.log(decodedToken)
+                req.user = decodedToken;
+                next();
             }
-            req.user = user;
-            next()
-        })
+        });
     } else {
-        res.status(401).json("You are not authenticated");
+        res.status(401).json({ error: "You are not authenticated" });
     }
 }
 
-module.exports = verifyToken;
+const checkUser = async (req, res, next) => {
+    const token = req.cookies.jwt;
+    if (!token) {
+        res.locals.user = null;
+        return next();
+    }
+
+    try {
+        const decodedToken = jwt.verify(token, process.env.JWT_KEY);
+        const user = await Users.findByPk(decodedToken.id);
+        res.locals.user = user;
+        next();
+    } catch (err) {
+        console.log(err.message);
+        res.locals.user = null;
+        next();
+    }
+};
+
+module.exports = {verifyToken, checkUser};

@@ -12,7 +12,7 @@ function Home() {
 
   // Getting list of notes
   useEffect(() => {
-    axios.get(`http://localhost:3000/notes`)
+    axios.get(`http://localhost:3000/notes`, { withCredentials: true })
     .then((response) => {
         setListOfNotes(response.data)
         console.log(response.data)
@@ -30,23 +30,27 @@ function Home() {
   // Save Button
   const handleSave = () => {
 
-    // Does not save note without a title
-    if (newTitle== ''){
-      setTitleErrMsg(true)
-      return
-    }
-    axios.post(`http://localhost:3000/notes`, {title: newTitle, postBody: ''})
-      .then((response) => {
-        setNewTitle('');
-        setTitleErrMsg(false)
-        setModal(false);
-        setListOfNotes([...listOfNotes, response.data]);
-      })
+  // Does not save note without a title
+  if (newTitle === '') {
+    setTitleErrMsg(true)
+    return
+  }
+
+  axios.post(`http://localhost:3000/notes`, { title: newTitle, postBody: '' }, { withCredentials: true })
+    .then((response) => {
+      setNewTitle('');
+      setTitleErrMsg(false);
+      setModal(false);
+      setListOfNotes([...listOfNotes, response.data]);
+    })
+    .catch((error) => {
+      console.error("Error creating note:", error);
+    });
   }
 
   // Delete Button
   const handleDelete = async (noteId) => {
-    await axios.delete(`http://localhost:3000/notes/${noteId}`)
+    await axios.delete(`http://localhost:3000/notes/${noteId}`, { withCredentials: true })
       .then((response) =>{
         console.log(response);
         setListOfNotes(prevNotes => prevNotes.filter(note => note.id !== noteId));

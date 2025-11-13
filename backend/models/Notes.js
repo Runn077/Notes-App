@@ -12,8 +12,7 @@ module.exports=(sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false
         }
-    }
-    );
+    });
     Notes.associate = (models) => {
         Notes.belongsTo(models.Users, {
             foreignKey: "userId",

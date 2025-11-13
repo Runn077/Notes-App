@@ -1,4 +1,3 @@
-const express = require("express");
 const { Users } = require("../models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -8,17 +7,14 @@ const generateAccessToken = (user) =>{
     return jwt.sign({
         id: user.id, 
         username: user.username,
-    }, process.env.JWT_KEY,
-        { expiresIn: '1h' }
-    );
+    }, process.env.JWT_KEY, { expiresIn: '1h' });
 }
 
 const generateRefreshToken = (user) =>{
     return jwt.sign({
         id: user.id, 
         username: user.username,
-    }, process.env.REFRESH_KEY
-    );
+    }, process.env.REFRESH_KEY);
 };
 
 // post
@@ -45,6 +41,11 @@ module.exports.registerPost = async (req, res) => {
         }
 
         const newUser = await Users.create({ username, password: hashedPassword });
+
+        // cookies
+        const token = generateAccessToken(newUser);
+        res.cookie('jwt', token, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24})
+        
         res.status(201).json({ message: "User registered successfully", user: newUser });
         
     } catch (err) {
@@ -68,16 +69,16 @@ module.exports.loginPost = async (req, res) => {
         };
         
         const accessToken = generateAccessToken(user);
-        const refreshToken = generateRefreshToken(user);
         
-        res.json({
-            id: user.id, 
-            username: user.username,
-            accessToken,
-            refreshToken
-        });
+        res.cookie('jwt', accessToken, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24});
+        res.status(200).json({message: "Login successful", user: user});
 
     } catch (error){
         console.error(error)
     };    
 };
+
+module.exports.logoutGet = (req, res) => {
+    res.clearCookie('jwt');
+    res.status(200).json({message: "Logout successful"});
+}

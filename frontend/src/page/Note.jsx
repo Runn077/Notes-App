@@ -15,7 +15,7 @@ function Note() {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/notes/${id}`)
+    axios.get(`http://localhost:3000/notes/${id}`, { withCredentials: true })
         .then((response) => {
             setNote(response.data)
         })
@@ -33,7 +33,7 @@ function Note() {
     await axios.put(`http://localhost:3000/notes/${id}`, {
         ...note,
         postBody: updatedText
-    });
+    }, {withCredentials: true});
   }
   const handleChangeTitle = async (e) => {
     const updatedText = e.target.value
