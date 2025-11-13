@@ -10,13 +10,6 @@ const generateAccessToken = (user) =>{
     }, process.env.JWT_KEY, { expiresIn: '1h' });
 }
 
-const generateRefreshToken = (user) =>{
-    return jwt.sign({
-        id: user.id, 
-        username: user.username,
-    }, process.env.REFRESH_KEY);
-};
-
 // post
 module.exports.refreshPost = (req, res) => {
     const refreshToken = req.body.token
