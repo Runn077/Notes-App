@@ -157,18 +157,6 @@ REFRESH_KEY=your_refresh_secret    # Refresh token key
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build
 
-## Future Improvements
-
-- [ ] Add note categories/tags
-- [ ] Implement rich text editor for notes
-- [ ] Add search functionality
-- [ ] Implement refresh token rotation
-- [ ] Add note sharing between users
-- [ ] Dark mode support
-- [ ] Add note timestamps (created, updated)
-- [ ] Implement pagination for large note lists
-- [ ] Add unit and integration tests
-
 ## Troubleshooting
 
 **Cookies not persisting?**
