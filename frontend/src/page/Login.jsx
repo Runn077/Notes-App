@@ -13,7 +13,8 @@ const schema = z.object({
     .nonempty("Password must be not empty")
     .min(5, "Password Must be at least 5 characters"),
 })
-function Login() {
+
+function Login({ setUsername }) { // accept setUsername as prop
   const navigate = useNavigate()
   const { register, handleSubmit, formState: {errors} } = useForm({
     resolver: zodResolver(schema),
@@ -21,19 +22,20 @@ function Login() {
   const [serverError, setServerError] = useState("")
 
   const onSubmit = async (data) => {
-    const userData = {
-      username: data.username,
-      password: data.password
-    }
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', userData, { withCredentials: true });
+      const response = await axios.post(
+        'http://localhost:3000/auth/login',
+        { username: data.username, password: data.password },
+        { withCredentials: true }
+      )
+
       if (response.data.user) {
-        navigate('/')
+        setUsername(response.data.user.username); // update shared state
+        navigate('/'); // redirect to home
       }
     } catch (error) {
       setServerError(error.response?.data?.error || "An unexpected error occurred.")
     }
-  
   }
 
   return (
@@ -42,22 +44,19 @@ function Login() {
           <div className='registrationTitle'>Login</div>  
           <p> Username </p>
           <input className='usernameInput' 
-          placeholder='Enter Username'
-          {...register("username")}
+            placeholder='Enter Username'
+            {...register("username")}
           />
           <p className='errorMessage'>{errors.username?.message}</p>
           <p> Password </p>
           <input className='passwordInput' 
-          type='password' 
-          placeholder='Enter Password'
-          {...register("password")}
+            type='password' 
+            placeholder='Enter Password'
+            {...register("password")}
           />
           <p className='errorMessage'>{errors.password?.message}</p>
           <p className='errorMessage'>{serverError}</p>
-          <button className='saveBtn' 
-          type='submit'>
-            Submit
-          </button>
+          <button className='saveBtn' type='submit'>Submit</button>
         </form>
     </div>
   )

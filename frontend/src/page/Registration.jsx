@@ -31,7 +31,7 @@ function Registration() {
     await axios.post(`http://localhost:3000/auth/register`, userData, { withCredentials: true })
     .then((response) => {
         console.log(response)
-        setServerError("");
+        navigate('/')
     })
     .catch((error) => {
       setServerError(error.response.data.error)
