@@ -143,7 +143,6 @@ DB_PASS=password                   # MySQL password
 DB_NAME=notes_db                   # Database name
 DB_HOST=localhost                  # Database host
 JWT_KEY=your_jwt_secret            # JWT signing key
-REFRESH_KEY=your_refresh_secret    # Refresh token key
 ```
 
 ## Available Scripts
