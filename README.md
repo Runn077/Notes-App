@@ -80,7 +80,6 @@ Notes-App-MERN/
    DB_NAME=notes_db
    DB_HOST=localhost
    JWT_KEY=your_jwt_secret_key
-   REFRESH_KEY=your_refresh_token_secret
    ```
 
    Start the backend:
@@ -133,19 +132,6 @@ Notes-App-MERN/
 - **Protected Routes**: All note operations require valid JWT authentication
 - **Token Expiry**: JWT tokens expire after 1 hour; refresh mechanism can be implemented
 
-## Environment Variables
-
-### Backend `.env`
-```env
-PORT=3000                          # Server port
-DB_USER=root                       # MySQL username
-DB_PASS=password                   # MySQL password
-DB_NAME=notes_db                   # Database name
-DB_HOST=localhost                  # Database host
-JWT_KEY=your_jwt_secret            # JWT signing key
-REFRESH_KEY=your_refresh_secret    # Refresh token key
-```
-
 ## Available Scripts
 
 ### Backend
@@ -156,18 +142,6 @@ REFRESH_KEY=your_refresh_secret    # Refresh token key
 - `npm run build` - Build for production
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build
-
-## Future Improvements
-
-- [ ] Add note categories/tags
-- [ ] Implement rich text editor for notes
-- [ ] Add search functionality
-- [ ] Implement refresh token rotation
-- [ ] Add note sharing between users
-- [ ] Dark mode support
-- [ ] Add note timestamps (created, updated)
-- [ ] Implement pagination for large note lists
-- [ ] Add unit and integration tests
 
 ## Troubleshooting
 
