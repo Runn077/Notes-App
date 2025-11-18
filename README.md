@@ -150,10 +150,6 @@ Notes-App-MERN/
 - Verify frontend axios requests use `withCredentials: true`
 - Check that frontend and backend ports match the CORS origin configuration
 
-**Database connection errors?**
-- Ensure MySQL is running
-- Verify `.env` credentials match your MySQL setup
-- Check database exists or let Sequelize auto-create with `alter: true`
 
 **401 Unauthorized on protected routes?**
 - Make sure you're logged in and have a valid JWT cookie
