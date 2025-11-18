@@ -10,13 +10,6 @@ const generateAccessToken = (user) =>{
     }, process.env.JWT_KEY, { expiresIn: '1h' });
 }
 
-const generateRefreshToken = (user) =>{
-    return jwt.sign({
-        id: user.id, 
-        username: user.username,
-    }, process.env.REFRESH_KEY);
-};
-
 // post
 module.exports.refreshPost = (req, res) => {
     const refreshToken = req.body.token
@@ -41,10 +34,6 @@ module.exports.registerPost = async (req, res) => {
         }
 
         const newUser = await Users.create({ username, password: hashedPassword });
-
-        // cookies
-        const token = generateAccessToken(newUser);
-        res.cookie('jwt', token, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24})
         
         res.status(201).json({ message: "User registered successfully", user: newUser });
         

@@ -80,7 +80,6 @@ Notes-App-MERN/
    DB_NAME=notes_db
    DB_HOST=localhost
    JWT_KEY=your_jwt_secret_key
-   REFRESH_KEY=your_refresh_token_secret
    ```
 
    Start the backend:
@@ -133,18 +132,6 @@ Notes-App-MERN/
 - **Protected Routes**: All note operations require valid JWT authentication
 - **Token Expiry**: JWT tokens expire after 1 hour; refresh mechanism can be implemented
 
-## Environment Variables
-
-### Backend `.env`
-```env
-PORT=3000                          # Server port
-DB_USER=root                       # MySQL username
-DB_PASS=password                   # MySQL password
-DB_NAME=notes_db                   # Database name
-DB_HOST=localhost                  # Database host
-JWT_KEY=your_jwt_secret            # JWT signing key
-```
-
 ## Available Scripts
 
 ### Backend
@@ -163,10 +150,6 @@ JWT_KEY=your_jwt_secret            # JWT signing key
 - Verify frontend axios requests use `withCredentials: true`
 - Check that frontend and backend ports match the CORS origin configuration
 
-**Database connection errors?**
-- Ensure MySQL is running
-- Verify `.env` credentials match your MySQL setup
-- Check database exists or let Sequelize auto-create with `alter: true`
 
 **401 Unauthorized on protected routes?**
 - Make sure you're logged in and have a valid JWT cookie

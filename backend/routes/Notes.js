@@ -1,53 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const { Notes } = require("../models");
 const { verifyToken } = require("../middleware/verifyKey");
 const { checkUser } = require("../middleware/verifyKey");
+const notesController = require("../controller/notesController");
+
 router.use(checkUser);
 
-// get
-router.get("/", verifyToken ,async (req, res) => {
-    const listOfNotes = await Notes.findAll({ where: { userId: req.user.id } });
-    res.json(listOfNotes);
-});
+// GET all notes
+router.get("/", verifyToken, notesController.getAllNotes);
 
-router.get("/:id", verifyToken, async (req, res) =>{
-    const note = await Notes.findOne({
-        where: { id: req.params.id, userId: req.user.id }
-    });
-    if (!note) return res.status(404).json({ error: "Note not found" });
-    res.json(note);
-})
+// GET a single note by ID
+router.get("/:id", verifyToken, notesController.getNoteById);
 
-// post
-router.post("/", verifyToken, async (req, res) => {
-    const note = await Notes.create({
-        ...req.body,
-        userId: req.user.id
-    });
-    res.json(note);
-});
+// POST create a new note
+router.post("/", verifyToken, notesController.createNote);
 
-// put
-router.put("/:id", verifyToken, async (req, res) => {
-    const id = req.params.id;
-    const {title, postBody} = req.body; // The updated data
-    
-    await Notes.update(
-        { title, postBody },
-        { where: { id: id, userId: req.user.id } }
-    );
-    
-    const updatedNote = await Notes.findByPk(id);
-    res.json(updatedNote);
+// PUT update a note
+router.put("/:id", verifyToken, notesController.updateNote);
 
-})
-
-// delete
-router.delete("/:id", verifyToken, async (req, res) => {
-    const id = req.params.id;
-    await Notes.destroy({ where: { id: id, userId: req.user.id } });
-    res.send("Delete is Successfull")
-})
+// DELETE a note
+router.delete("/:id", verifyToken, notesController.deleteNote);
 
 module.exports = router;
