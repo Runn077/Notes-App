@@ -54,50 +54,44 @@ Notes-App-MERN/
 
 ### Prerequisites
 
-- **Node.js** (v14 or higher)
-- **npm** or **yarn**
-- **MySQL** (running locally or remote connection string in `.env`)
+Make sure you have the following installed on your machine:  
+- [Docker](https://www.docker.com/get-started)  
+- [Docker Compose](https://docs.docker.com/compose/install/)  
 
 ### Installation
 
-1. **Clone the repository** (if applicable):
+1. **Clone the repository**:
    ```bash
    git clone <repository-url>
    cd Notes-App-MERN
    ```
-
-2. **Setup Backend**:
+2. **Create .env files**
+   
+   In the backend folder create a .env with the following variables:
    ```bash
-   cd backend
-   npm install
-   ```
-
-   Create a `.env` file in the `backend` folder with:
-   ```env
    PORT=3000
    DB_USER=root
-   DB_PASS=your_mysql_password
-   DB_NAME=notes_db
-   DB_HOST=localhost
+   DB_PASS=root
+   DB_NAME=notesApp
+   DB_HOST=db
    JWT_KEY=your_jwt_secret_key
    ```
-
-   Start the backend:
+3. **Start the app using Docker Compose**
    ```bash
-   npm start
+   docker-compose up --build
    ```
-   Server will run on `http://localhost:3000`
-
-3. **Setup Frontend**:
-   ```bash
-   cd ../frontend
-   npm install
-   npm run dev
-   ```
-   Frontend will run on `http://localhost:3010`
-
 4. **Open in Browser**:
    Navigate to `http://localhost:3010` and start using the app!
+5. **Stop the application**
+   
+   In the terminal
+   
+   Ctrl + C
+
+   To stop and remove the container
+   ```bash
+   docker-compose down
+   ```
 
 ## Usage
 
