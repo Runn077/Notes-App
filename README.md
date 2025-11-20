@@ -63,7 +63,7 @@ Make sure you have the following installed on your machine:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/Runn077/Notes-App.git
-   cd Notes-App-MERN
+   cd Notes-App
    ```
 2. **Create .env files**
    
